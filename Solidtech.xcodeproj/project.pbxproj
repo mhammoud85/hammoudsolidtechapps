@@ -12,6 +12,9 @@
 		180B7602271AC98E00E53864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180B7600271AC98E00E53864 /* Main.storyboard */; };
 		180B7604271AC99000E53864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180B7603271AC99000E53864 /* Assets.xcassets */; };
 		180B7607271AC99000E53864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180B7605271AC99000E53864 /* LaunchScreen.storyboard */; };
+		180B7614271AD38600E53864 /* ReceipeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B7613271AD38600E53864 /* ReceipeCollectionCell.xib */; };
+		180B7617271AD56000E53864 /* ReceipeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B7616271AD56000E53864 /* ReceipeCollectionCell.swift */; };
+		29C23399C7A4CA56E7B1D074 /* Pods_Solidtech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A214CC808B34D255D53A89 /* Pods_Solidtech.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,11 @@
 		180B7603271AC99000E53864 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180B7606271AC99000E53864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180B7608271AC99000E53864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180B7613271AD38600E53864 /* ReceipeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceipeCollectionCell.xib; sourceTree = "<group>"; };
+		180B7616271AD56000E53864 /* ReceipeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeCollectionCell.swift; sourceTree = "<group>"; };
+		304E1CA4D4141960C18DE0F9 /* Pods-Solidtech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solidtech.debug.xcconfig"; path = "Target Support Files/Pods-Solidtech/Pods-Solidtech.debug.xcconfig"; sourceTree = "<group>"; };
+		53A214CC808B34D255D53A89 /* Pods_Solidtech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solidtech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EB43766123242FE514F7A9B /* Pods-Solidtech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solidtech.release.xcconfig"; path = "Target Support Files/Pods-Solidtech/Pods-Solidtech.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C23399C7A4CA56E7B1D074 /* Pods_Solidtech.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,8 @@
 			children = (
 				180B75F9271AC98E00E53864 /* Solidtech */,
 				180B75F8271AC98E00E53864 /* Products */,
+				E936143ABA30D3498D80C1CD /* Pods */,
+				D906D413184AFFB937B9BA76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +65,7 @@
 		180B75F9271AC98E00E53864 /* Solidtech */ = {
 			isa = PBXGroup;
 			children = (
+				180B7612271AD35500E53864 /* Cells */,
 				180B75FA271AC98E00E53864 /* AppDelegate.swift */,
 				180B75FE271AC98E00E53864 /* ViewController.swift */,
 				180B7600271AC98E00E53864 /* Main.storyboard */,
@@ -64,6 +76,33 @@
 			path = Solidtech;
 			sourceTree = "<group>";
 		};
+		180B7612271AD35500E53864 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				180B7613271AD38600E53864 /* ReceipeCollectionCell.xib */,
+				180B7616271AD56000E53864 /* ReceipeCollectionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D906D413184AFFB937B9BA76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53A214CC808B34D255D53A89 /* Pods_Solidtech.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E936143ABA30D3498D80C1CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				304E1CA4D4141960C18DE0F9 /* Pods-Solidtech.debug.xcconfig */,
+				5EB43766123242FE514F7A9B /* Pods-Solidtech.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 180B760B271AC99000E53864 /* Build configuration list for PBXNativeTarget "Solidtech" */;
 			buildPhases = (
+				684E34F8A6610D6698B172AE /* [CP] Check Pods Manifest.lock */,
 				180B75F3271AC98E00E53864 /* Sources */,
 				180B75F4271AC98E00E53864 /* Frameworks */,
 				180B75F5271AC98E00E53864 /* Resources */,
+				65F8156C5B70A3D94578066E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,16 +165,60 @@
 				180B7607271AC99000E53864 /* LaunchScreen.storyboard in Resources */,
 				180B7604271AC99000E53864 /* Assets.xcassets in Resources */,
 				180B7602271AC98E00E53864 /* Main.storyboard in Resources */,
+				180B7614271AD38600E53864 /* ReceipeCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65F8156C5B70A3D94578066E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Solidtech/Pods-Solidtech-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Solidtech/Pods-Solidtech-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Solidtech/Pods-Solidtech-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		684E34F8A6610D6698B172AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Solidtech-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		180B75F3271AC98E00E53864 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180B7617271AD56000E53864 /* ReceipeCollectionCell.swift in Sources */,
 				180B75FF271AC98E00E53864 /* ViewController.swift in Sources */,
 				180B75FB271AC98E00E53864 /* AppDelegate.swift in Sources */,
 			);
@@ -279,6 +364,7 @@
 		};
 		180B760C271AC99000E53864 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 304E1CA4D4141960C18DE0F9 /* Pods-Solidtech.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +385,7 @@
 		};
 		180B760D271AC99000E53864 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EB43766123242FE514F7A9B /* Pods-Solidtech.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

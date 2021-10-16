@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController
 {
@@ -75,10 +76,10 @@ extension ViewController: UITableViewDataSource
         flowLayout.minimumInteritemSpacing = 10.0
         flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
 
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: (tableView.frame.width-3*5)/2, height: 280), collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 280), collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(UINib(nibName: "ReceipeCollectionCell", bundle: nil), forCellWithReuseIdentifier: "ReceipeCollectionCell")
         
         collectionView.tag = indexPath.row
         collectionView.backgroundColor = .white
@@ -91,26 +92,43 @@ extension ViewController: UITableViewDataSource
 
 extension ViewController: UICollectionViewDelegate
 {
-    
+}
+
+extension ViewController:UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        return CGSize(width: (collectionView.frame.width-3*5)/2, height: collectionView.frame.height)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        let item = self.array[section] as [String: Any]
+        let tag = collectionView.tag
+        let item = self.array[tag] as [String: Any]
         let receipes = item["receipes"] as! [[String: Any]]
         
         return receipes.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceipeCollectionCell", for: indexPath) as! ReceipeCollectionCell
         
+        let tag = collectionView.tag
+        let item = self.array[tag] as [String: Any]
+        let receipes = item["receipes"] as! [[String: Any]]
+        let receipe = receipes[indexPath.row]
+        
+        cell.titleLabel.text = receipe["name"] as? String
+        cell.dateLabel.text = receipe["timetoprepare"] as? String
+        cell.descriptionLabel.text = receipe["smalldescription"] as? String
+        let imageurl = receipe["imageurl"] as? String
+        let url = URL(string: imageurl!.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)!)
+        cell.imageView.kf.setImage(with: url)
+
         return cell
     }
-    
-    
 }

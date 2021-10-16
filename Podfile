@@ -7,4 +7,5 @@ target 'Solidtech' do
 
   # Pods for Solidtech
 pod 'Kingfisher', '~> 7.0'
+pod 'Google-Mobile-Ads-SDK'
 end

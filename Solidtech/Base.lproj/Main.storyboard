@@ -33,25 +33,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="abH-LP-K08">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="yN5-me-eQC"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="XJ7-YG-mDG"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3n0-yU-ctL">
+                                <rect key="frame" x="0.0" y="782" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhw-yJ-5iJ">
+                                        <rect key="frame" x="295.5" y="0.0" width="110.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="d4j-UO-ruI"/>
+                                            <constraint firstAttribute="width" secondItem="yhw-yJ-5iJ" secondAttribute="height" multiplier="151:41" id="q6v-Jp-zfY"/>
+                                        </constraints>
+                                        <state key="normal" image="ads"/>
+                                        <connections>
+                                            <action selector="onRemoveAds:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2l4-cI-sdH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yhw-yJ-5iJ" secondAttribute="trailing" constant="8" id="1K0-hM-jLO"/>
+                                    <constraint firstAttribute="height" constant="80" id="Y5a-uY-VRY"/>
+                                    <constraint firstItem="yhw-yJ-5iJ" firstAttribute="top" secondItem="3n0-yU-ctL" secondAttribute="top" id="e3J-3y-95L"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="abH-LP-K08" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Ca-Ma-lUJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3n0-yU-ctL" secondAttribute="bottom" id="JB4-C5-nc7"/>
                             <constraint firstItem="abH-LP-K08" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="P1R-Np-Q7t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="abH-LP-K08" secondAttribute="bottom" id="R9n-xI-Nh3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3n0-yU-ctL" secondAttribute="trailing" id="oQ5-Pq-PNL"/>
+                            <constraint firstItem="3n0-yU-ctL" firstAttribute="top" secondItem="abH-LP-K08" secondAttribute="bottom" id="oSm-Cl-VAo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="abH-LP-K08" secondAttribute="trailing" id="q2q-Jk-mDN"/>
+                            <constraint firstItem="3n0-yU-ctL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qBX-BW-afc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Food Lovers" id="g2i-cn-UFc"/>
                     <connections>
+                        <outlet property="adBannerView" destination="3n0-yU-ctL" id="d0t-N2-dbe"/>
                         <outlet property="tableView" destination="abH-LP-K08" id="QHY-B1-PP1"/>
                     </connections>
                 </viewController>
@@ -61,6 +86,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ads" width="150.5" height="40.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

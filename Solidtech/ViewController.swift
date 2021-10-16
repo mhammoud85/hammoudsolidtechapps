@@ -7,19 +7,54 @@
 
 import UIKit
 import Kingfisher
+import GoogleMobileAds
 
 class ViewController: UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var adBannerView: UIView!
 
     var array = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-8501671653071605/1974659335"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        
         self.getRecipes()
     }
 
+    @IBAction func onRemoveAds(_ sender: Any)
+    {
+        self.adBannerView.isHidden = true
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView)
+    {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        self.adBannerView.addSubview(bannerView)
+        self.adBannerView.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: self.adBannerView,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: self.adBannerView,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+    
     func getRecipes()
     {
         let url = URL(string: "http://testtask.solidtechapps.com/api/v1/response/")
@@ -53,14 +88,22 @@ extension ViewController: UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 280
+        let item = self.array[indexPath.row] as [String: Any]
+        let receipes = item["receipes"] as! [[String: Any]]
+        let row = CGFloat(receipes.count/2).rounded(.up)
+        
+        return CGFloat(row * 250)
     }
 }
 
 extension ViewController: UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         self.array.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,21 +115,32 @@ extension ViewController: UITableViewDataSource
         }
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
         flowLayout.minimumInteritemSpacing = 10.0
         flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
 
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 280), collectionViewLayout: flowLayout)
+        let item = self.array[indexPath.section] as [String: Any]
+        let receipes = item["receipes"] as! [[String: Any]]
+        let row = CGFloat(receipes.count/2).rounded(.up)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: CGFloat(row * 250)), collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ReceipeCollectionCell", bundle: nil), forCellWithReuseIdentifier: "ReceipeCollectionCell")
         
-        collectionView.tag = indexPath.row
+        collectionView.tag = indexPath.section
         collectionView.backgroundColor = .white
+        collectionView.isScrollEnabled = false
         
         cell?.contentView.addSubview(collectionView)
-        
+
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        let item = self.array[section] as [String: Any]
+
+        return item["categoryName"] as? String
     }
 }
 
@@ -98,7 +152,7 @@ extension ViewController:UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: (collectionView.frame.width-3*5)/2, height: collectionView.frame.height)
+        return CGSize(width: (collectionView.frame.width-3*10)/2, height: 250)
     }
 }
 
@@ -130,5 +184,32 @@ extension ViewController: UICollectionViewDataSource
         cell.imageView.kf.setImage(with: url)
 
         return cell
+    }
+}
+
+extension ViewController: GADBannerViewDelegate
+{
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      addBannerViewToView(bannerView)
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
     }
 }

@@ -16,6 +16,13 @@ class ViewController: UIViewController
 
     var array = [[String: Any]]()
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        if UserDefaults.standard.bool(forKey: "ads")
+        {
+            self.adBannerView.isHidden = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,6 +38,7 @@ class ViewController: UIViewController
     @IBAction func onRemoveAds(_ sender: Any)
     {
         self.adBannerView.isHidden = true
+        UserDefaults.standard.set(true, forKey: "ads")
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView)
@@ -184,6 +192,18 @@ extension ViewController: UICollectionViewDataSource
         cell.imageView.kf.setImage(with: url)
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let previewViewController = storyboard.instantiateViewController(withIdentifier: "preview") as! PreviewViewController
+        let tag = collectionView.tag
+        let item = self.array[tag] as [String: Any]
+        let receipes = item["receipes"] as! [[String: Any]]
+        let receipe = receipes[indexPath.row]
+        previewViewController.receipe = receipe
+        self.navigationController?.pushViewController(previewViewController, animated: true)
     }
 }
 

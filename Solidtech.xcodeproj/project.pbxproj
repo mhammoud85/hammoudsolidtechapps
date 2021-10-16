@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		180B7607271AC99000E53864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180B7605271AC99000E53864 /* LaunchScreen.storyboard */; };
 		180B7614271AD38600E53864 /* ReceipeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B7613271AD38600E53864 /* ReceipeCollectionCell.xib */; };
 		180B7617271AD56000E53864 /* ReceipeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B7616271AD56000E53864 /* ReceipeCollectionCell.swift */; };
+		180B7626271AF56700E53864 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B7625271AF56700E53864 /* PreviewViewController.swift */; };
 		29C23399C7A4CA56E7B1D074 /* Pods_Solidtech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A214CC808B34D255D53A89 /* Pods_Solidtech.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		180B7608271AC99000E53864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180B7613271AD38600E53864 /* ReceipeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceipeCollectionCell.xib; sourceTree = "<group>"; };
 		180B7616271AD56000E53864 /* ReceipeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeCollectionCell.swift; sourceTree = "<group>"; };
+		180B7625271AF56700E53864 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		304E1CA4D4141960C18DE0F9 /* Pods-Solidtech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solidtech.debug.xcconfig"; path = "Target Support Files/Pods-Solidtech/Pods-Solidtech.debug.xcconfig"; sourceTree = "<group>"; };
 		53A214CC808B34D255D53A89 /* Pods_Solidtech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solidtech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB43766123242FE514F7A9B /* Pods-Solidtech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solidtech.release.xcconfig"; path = "Target Support Files/Pods-Solidtech/Pods-Solidtech.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				180B7603271AC99000E53864 /* Assets.xcassets */,
 				180B7605271AC99000E53864 /* LaunchScreen.storyboard */,
 				180B7608271AC99000E53864 /* Info.plist */,
+				180B7625271AF56700E53864 /* PreviewViewController.swift */,
 			);
 			path = Solidtech;
 			sourceTree = "<group>";
@@ -99,7 +102,6 @@
 				304E1CA4D4141960C18DE0F9 /* Pods-Solidtech.debug.xcconfig */,
 				5EB43766123242FE514F7A9B /* Pods-Solidtech.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,6 +223,7 @@
 				180B7617271AD56000E53864 /* ReceipeCollectionCell.swift in Sources */,
 				180B75FF271AC98E00E53864 /* ViewController.swift in Sources */,
 				180B75FB271AC98E00E53864 /* AppDelegate.swift in Sources */,
+				180B7626271AF56700E53864 /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
